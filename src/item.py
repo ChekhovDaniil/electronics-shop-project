@@ -33,4 +33,26 @@ class Item:
         """
         self.price *= self.pay_rate
 
+    @property
+    def name(self) -> str:
+        return self.__name
 
+    @name.setter
+    def name(self, new_name):
+        """
+        Если длина наименования товара превышает 10 символов,
+        то вырезает последующие после 10(и) символы.
+        """
+        if len(new_name) > 10:
+            print('Exception: Длина наименования товара превышает 10 символов.')
+        self.__name = new_name
+        print(new_name[:10])
+
+    @classmethod
+    def instantiate_from_csv(cls):
+        pass
+
+    @staticmethod
+    def string_to_number(string):
+        number = string
+        return int(number)

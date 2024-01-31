@@ -9,7 +9,6 @@ def test_calculate_total_price():
     assert data.quantity == 20
 
 
-
 def test_apply_discount():
     """Проверяет правильность выполнения метода, который подсчитвает установленную скидку для конкретного товара"""
     data.pay_rate = 0.8
