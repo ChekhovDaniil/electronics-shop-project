@@ -24,7 +24,7 @@ class Tests:
         """
         Проверка метода инициализируеющнго экземпляры класса Item данными из файла src/items.csv
         """
-        Item.instantiate_from_csv('src/items.csv')
+        Item.instantiate_from_csv()
         assert len(Item.all) == 5
 
     def test_string_to_number(self):

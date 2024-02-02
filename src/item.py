@@ -48,7 +48,7 @@ class Item:
         self.__name = new_name[:10]
 
     @classmethod
-    def instantiate_from_csv(cls, data='src/items.csv'):
+    def instantiate_from_csv(cls):
         """
         Инициализирует экземпляры класса Item данными из файла src/items.csv
         """
