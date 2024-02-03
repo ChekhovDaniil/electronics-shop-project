@@ -1,3 +1,7 @@
+import csv
+import os
+
+
 class Item:
     """
     Класс для представления товара в магазине.
@@ -38,7 +42,7 @@ class Item:
         return self.__name
 
     @name.setter
-    def name(self, new_name):
+    def name(self, new_name) -> None:
         """
         Если длина наименования товара превышает 10 символов,
         то вырезает последующие после 10(и) символы.
@@ -48,21 +52,19 @@ class Item:
         self.__name = new_name[:10]
 
     @classmethod
-    def instantiate_from_csv(cls):
+    def instantiate_from_csv(cls) -> None:
         """
         Инициализирует экземпляры класса Item данными из файла src/items.csv
         """
-        import csv
-        import os
         cls.all.clear()
         path = os.path.join(os.path.dirname(__file__), 'items.csv')
         with open(path, 'r', encoding='UTF-8') as f:
             reader = csv.DictReader(f)
             for read in reader:
-                cls(read['name'], read['price'], read['quantity'])
+                cls(str(read['name']), float(read['price']), int(read['quantity']))
 
     @staticmethod
-    def string_to_number(num_string):
+    def string_to_number(num_string) -> int:
         """
         Преобраует строку в число
         """
