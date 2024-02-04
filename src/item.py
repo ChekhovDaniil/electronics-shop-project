@@ -69,3 +69,9 @@ class Item:
         Преобраует строку в число
         """
         return int(float(num_string))
+
+    def __repr__(self) -> str:
+        return f'Item{self.__name, self.price, self.quantity}'
+
+    def __str__(self) -> str:
+        return self.__name

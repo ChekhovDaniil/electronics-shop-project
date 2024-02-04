@@ -32,3 +32,15 @@ class Tests:
         Проверка метода преоброзвания строки в число
         """
         assert data.string_to_number("200") == 200
+
+    def test__repr__(self):
+        """
+        Тест правуильного вывода информации для разработчика
+        """
+        assert data.__repr__() == "Item('Abrakadabr', 8000.0, 20)"
+
+    def test__str__(self):
+        """
+        Тест правуильного вывода информации для пользователя
+        """
+        assert data.__str__() == 'Abrakadabr'
