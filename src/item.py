@@ -70,14 +70,17 @@ class Item:
         """
         return int(float(num_string))
 
+    def __add__(self, other) -> int:
+        """
+        Складывает экземпляры класса Phone и Item.
+        Если экземпляр не является атрибутом класса то выводит ValueError.
+        """
+        if not isinstance(other, Item):
+            raise ValueError('Складывать можно только объекты Item и дочерние от них.')
+        return self.quantity + other.quantity
+
     def __repr__(self) -> str:
         return f'Item{self.__name, self.price, self.quantity}'
 
     def __str__(self) -> str:
         return self.__name
-
-    def __add__(self, other) -> int:
-        if not isinstance(other, Item):
-            raise ValueError('Складывать можно только объекты Item и дочерние от них.')
-        return self.quantity + other.quantity
-
