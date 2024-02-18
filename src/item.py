@@ -79,7 +79,7 @@ class Item:
     def __add__(self, other) -> int:
         """
         Складывает экземпляры класса Phone и Item.
-        Если экземпляр не является атрибутом класса то выводит ValueError.
+        Если экземпляр не является атрибутом класса, то выводит ValueError.
         """
         if not isinstance(other, Item):
             raise ValueError('Складывать можно только объекты Item и дочерние от них.')

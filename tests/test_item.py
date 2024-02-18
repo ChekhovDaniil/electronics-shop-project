@@ -25,14 +25,13 @@ def test_name():
 
 
 def test_unbroken_instantiate_from_csv():
+    """Тестирование метода instantiate_from_csv в правильном состоянии."""
     Item.instantiate_from_csv()
     assert len(Item.all) == 5
 
 
 def test_broken_instantiate_from_csv():
-    """
-    Проверка метода инициализируеющнго экземпляры класса Item данными из файла src/items.csv
-    """
+    """Тестирование метода instantiate_from_csv в сломанном состоянии."""
     # Если файл items.csv отсутствует.
     with pytest.raises(KeyError):
         Item.instantiate_from_csv()
