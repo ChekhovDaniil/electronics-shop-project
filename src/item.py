@@ -1,5 +1,6 @@
 import csv
 import os
+from src.exceptions import InstantiateCSVError
 
 
 class Item:
@@ -58,10 +59,15 @@ class Item:
         """
         cls.all.clear()
         path = os.path.join(os.path.dirname(__file__), 'items.csv')
-        with open(path, 'r', encoding='UTF-8') as f:
-            reader = csv.DictReader(f)
-            for read in reader:
-                cls(str(read['name']), float(read['price']), int(read['quantity']))
+        try:
+            with open(path, 'r', encoding='UTF-8') as f:
+                reader = csv.DictReader(f)
+                for read in reader:
+                    cls(str(read['name']), float(read['price']), int(read['quantity']))
+        except FileNotFoundError:
+            raise FileNotFoundError('Отсутствует файл item.csv')
+        except KeyError:
+            raise InstantiateCSVError
 
     @staticmethod
     def string_to_number(num_string) -> int:
@@ -73,7 +79,7 @@ class Item:
     def __add__(self, other) -> int:
         """
         Складывает экземпляры класса Phone и Item.
-        Если экземпляр не является атрибутом класса то выводит ValueError.
+        Если экземпляр не является атрибутом класса, то выводит ValueError.
         """
         if not isinstance(other, Item):
             raise ValueError('Складывать можно только объекты Item и дочерние от них.')
