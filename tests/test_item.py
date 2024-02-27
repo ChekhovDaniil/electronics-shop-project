@@ -25,15 +25,15 @@ def test_name():
 
 
 def test_unbroken_instantiate_from_csv():
-    """Тестирование метода instantiate_from_csv в правильном состоянии."""
+    """Тестирование несломленного метода instantiate_from_csv."""
     Item.instantiate_from_csv()
     assert len(Item.all) == 5
 
 
 def test_broken_instantiate_from_csv():
-    """Тестирование метода instantiate_from_csv в сломанном состоянии."""
+    """Тестирование сломленного метода instantiate_from_csv."""
     # Если файл items.csv отсутствует.
-    with pytest.raises(KeyError):
+    with pytest.raises(FileNotFoundError):
         Item.instantiate_from_csv()
     # Если файл item.csv поврежден
     with pytest.raises(InstantiateCSVError):
